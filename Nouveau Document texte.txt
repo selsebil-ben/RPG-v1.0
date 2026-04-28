@@ -1,0 +1,50 @@
+## Repository Structure & How to Explore
+
+| Folder | Description |
+|--------|-------------|
+| [`/rpg-model`](./rpg-model) | Core implementation of the **Reified Property Graph (RPG)** model using CozoDB. |
+| [`/data-processing`](./data-processing) | Data transformation pipelines from LDBC SNB CSV files to different systems (CozoDB, Neo4j, HO-GDB). |
+| [`/workloads`](./workloads) | Definition of benchmark workloads, including objectives and query implementations across systems (CozoScript, Cypher, Python). |
+| [`/papers`](./papers) | Research papers related to the RPG model (French and English versions). |
+
+---
+
+## Getting Started
+
+To explore and reproduce the experiments:
+
+1. Start by reviewing the workload scenarios and their objectives in [`/workloads`](./workloads).  
+   Each workload contains a detailed description along with query implementations for:
+   - RPG (CozoScript)
+   - Neo4j (Cypher)
+   - HO-GDB (Python)
+
+2. Process the LDBC SNB dataset using the pipelines in [`/data-processing`](./data-processing):
+   - [`/snb-to-cozo`](./data-processing/snb-to-cozo) to generate a standard Property Graph in CozoDB  
+   - [`/snb-to-neo4j`](./data-processing/snb-to-neo4j) to load data into Neo4j  
+   - [`/snb-to-hogdb`](./data-processing/snb-to-hogdb) to prepare data for HO-GDB  
+
+3. Explore the RPG model implementation in [`/rpg-model`](./rpg-model):  
+   This module contains the CozoDB-based implementation of the Reified Property Graph.
+
+4. Execute the workloads across the different systems:
+   - CozoDB (RPG)
+   - Neo4j (Property Graph)
+   - HO-GDB
+
+5. Compare query behavior and performance across systems using the provided workload queries.
+
+---
+
+## Notes
+
+- The repository is organized to clearly separate:
+  - **Model definition and implementation** (`rpg-model`)
+  - **Data transformation pipelines** (`data-processing`)
+  - **Experimental workloads** (`workloads`)
+  - **Scientific contributions** (`papers`)
+
+- This structure is designed to support:
+  - reproducible experiments  
+  - fair comparison between graph models  
+  - extension to additional systems or workloads  

@@ -50,27 +50,40 @@ A multi-level abstraction occurs when a reified node or edge contains other reif
 
 ## Repository Structure & How to Explore
 
-| Folder                          | Description                                                                 |
-|---------------------------------|-----------------------------------------------------------------------------|
-| [`/_1_Workloads Design & Objectives`](./_1_Workloads_Design_&_Objectives)| Explain the senario of each workload and its objective|
-| [`/_2_Benchmark_PG_CozoDB`](./_2_Benchmark_PG_CozoDB)     | Generate graph data into Cozo scripts to build a standard PG in cozoDB|
-| [`/_3_PG_from_cozoDB_to_Neo4j`](./_3_PG_from_cozoDB_to_Neo4j) | Scripts to convert Cozo scripts into CSV files for Neo4j                  |
-| [`/_4_RPG_cozoDB`](./_4_RPG_cozoDB) | Scripts to upgrade the standard PG into a Reified Property Graph (RPG)     |
-| [`/_5_RPG_HOGDB`](./_5_RPG_HOGDB) | Scripts to convert Cozo scripts of an RPG into  HO-GDB    |
-| [`/_6_Queries_&_Results`](./_6_Queries_&_Results) | Query scripts and experimental results             |
+| Folder | Description |
+|--------|-------------|
+| [`/rpg-model`](./rpg-model) | Core implementation of the **Reified Property Graph (RPG)** model using CozoDB |
+| [`/SNB-Benchmark_processing`](./SNB-Benchmark_processing) | Data processing pipelines for transforming LDBC SNB datasets into different graph models and systems |
+| `/SNB-Benchmark_processing/Benchmark_For_Simple_PG` | Generation of a standard Property Graph (PG) across CozoDB, Neo4j, and HO-GDB |
+| `/SNB-Benchmark_processing/Benchmark_For_PG+reification` | Generation of a Property Graph with reification (RPG) for CozoDB and HO-GDB |
+| [`/workloads`](./workloads) | Definition of experimental workloads, including descriptions and query implementations across systems (CozoDB, Neo4j, HO-GDB) |
+| [`/papers`](./papers) | Research publications related to the RPG model (French and English versions) |
 
 ---
 
 ## Getting Started
 
-To get started:
+To explore and reproduce the experiments:
 
-1. have a look on workloads design and their objectives in [`/_1_Workloads Design & Objectives`](./_1_Workloads_Design_&_Objectives)
-2. Follow the setup instructions in [`/_2_Benchmark_PG_CozoDB`](./_2_Benchmark_PG_CozoDB) to get the standard PG in cozoDB
-3. Load the standrd PG into Neo4j using the CSV files from [`/_3_PG_from_cozoDB_to_Neo4j`](./_3_PG_from_cozoDB_to_Neo4j)
-4. Add reified elments with [`/_4_RPG_cozoDB`](./_4_RPG_cozoDB)
-5. Use the standard PG in Neo4j and add subgraph nodes to get a HO-GDB using [`/_5_RPG_HOGDB`](./_5_RPG_HOGDB) 
-6. Analyze performance using queries in [`/_6_Queries_&_Results`](./_6_Queries_&_Results)
+1. Start by reviewing the workload scenarios and their objectives in [`/workloads`](./workloads)
+
+2. Generate a **standard Property Graph (PG)** using CozoDB by following the pipeline in:
+   - [`/SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_CozoDB`](./SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_CozoDB)
+
+3. Load the generated PG into Neo4j using:
+   - [`/SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_Neo4j`](./SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_Neo4j)
+
+4. (Optional) Use HO-GDB representation of the standard PG via:
+   - [`/SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_HO-GD`](./SNB-Benchmark_processing/Benchmark_For_Simple_PG/PG_HO-GD)
+
+5. Upgrade the standard PG into a **Reified Property Graph (RPG)** using CozoDB:
+   - [`/SNB-Benchmark_processing/Benchmark_For_PG+reification/PG+reification_CozoDB`](./SNB-Benchmark_processing/Benchmark_For_PG+reification/PG+reification_CozoDB)
+
+6. Generate the corresponding HO-GDB representation of the RPG:
+   - [`/SNB-Benchmark_processing/Benchmark_For_PG+reification/PG+reification_HO-GDB`](./SNB-Benchmark_processing/Benchmark_For_PG+reification/PG+reification_HO-GDB)
+
+7. Execute and compare queries across systems using the implementations provided in each workload folder (`cozo/`, `neo4j/`, `hogdb/`)
+
 
 ---
 ## How to Cite This Work
