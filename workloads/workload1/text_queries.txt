@@ -1,0 +1,97 @@
+IS1 : single-node lookup + node property retrieval
+Profile of a person : 
+Given a start Person with ID $personId, retrieve their first name, last name, birthday, 
+IP address, browser, and city of residence.
+
+
+IS2 : multiple  edge join (comment -hasCreator-person , comment -replyOf-Post, Post-hascreator-original Poster) + filtering + sorting (by date) + limit (TOP 10).
+Recent messages of a person
+Given a start Person with ID$personId, retrieve the last 10 Messages
+created by that user. Foreach Message, return that Message, 
+the original Post in its conversation(post), and the author of that Post (original Poster). 
+If  any of the Messages is a Post, then the original Post(post)
+will be the same Message, i.e.that Message will appear twice in that result.
+
+
+
+IS3 :  multi edge traversal (Person–[:KNOWS]–Person) + edge property retrieval.
+Friends of a Person
+Given a start person with ID $personId, retrieve all of their friends and the date at which they became friends.
+
+
+
+IS4 : single-node lookup + node property retrieval
+Content of a message 
+Given a message with ID $messageId, retrieve its content and creation date.
+
+
+IS5 : edge traversal (Message -hasCreator - author) + node property retrieval (id).
+Creator of a message
+Given a Message with ID$messageId, retrieve its author.
+
+
+IS6 : conditional edge traversal (post -> Forum or comment -> Post -> Forum) + conditional edge 
+join (post -> Forum -> Moderator or comment -> Post -> Forum -> Moderator).
+Forum of a message
+Given a message with ID $messageId, retrieve the forum that contains it and the person who 
+moderates that forum.
+Since comments are not directly contained in forums, for comments, return the forum 
+containing the original post in the thread to which the comment is replying.
+
+
+IS7 : edge traversal (comment -> Comment /comment -> Post ) to find destination node, 
+multiple  edge join (comment–[:hasCreator]->replyAuthor –[:KNOWS]–originalAuthor )+ boolean computation.
+Replies of a message
+Given a message with ID $messageId, retrieve the (1-hop) comments that reply to it.
+In addition, return a boolean flag knows indicating whether the author of the reply 
+(replyAuthor) knows the author of the original message (messageAuthor).
+If the author is the same as the originalAuthor, return False for the knows flag.
+
+
+IC1 : Transitive friends with a certain name
+Given a start Person with ID $personId, find Persons with a given first name ($firstName) that the
+start Person is connected to (excluding start Person) by at most 3 steps via the knows relationships.
+Return Persons, including the distance (1..3), summaries of the Persons workplaces and places of
+study.
+
+
+IC3 : 
+
+Given a start Person with ID $personId, find Persons that are their friends and friends of friends
+(excluding the start Person) that have made Posts / Comments in both of the given Countries (named
+$countryXName and $countryYName), within [$startDate, $startDate + $durationDays) (closedopen
+interval). Only Persons that are foreign to these Countries are considered, that is Persons whose location Country is neither named $countryXName nor $countryYName.
+
+
+IC13 : Single shortest path
+Given two persons with IDs $person1Id and $person2Id, find the shortest path between these two persons in the subgraph induced by the knows edges. Return the length of this path:
+
+−1 : no path found
+
+0 : start person = end person
+
+> 0 : path found (start person ≠ end person)
+
+
+
+IC14 : Trusted connection paths 
+Given two persons with IDs $person1Id and $person2Id, find all (unweighted) shortest paths between these two persons in the subgraph induced by the knows relationship.
+
+Then, for each path, calculate a weight.
+The nodes in the path are Persons, and the weight of a path is the sum of weights between every pair of consecutive Person nodes in the path.
+
+The weight for a pair of Persons is calculated based on their interactions:
+
+Every direct reply (by one of the Persons) to a Post (by the other Person) is 1.0.
+
+Every direct reply (by one of the Persons) to a Comment (by the other Person) is 0.5.
+
+Note that interactions are counted both ways.
+For example, if Alice writes 2 Post replies and 1 Comment reply to Bob, while Bob writes 3 Post replies and 4 Comment replies to Alice, their interaction score is:
+2 × 1.0 + 1 × 0.5 + 3 × 1.0 + 4 × 0.5 = 7.5.
+
+Return all the paths with shortest length and their weights.
+Do not return any rows if there is no path between the two Persons.
+
+
+
