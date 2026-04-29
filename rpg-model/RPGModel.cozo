@@ -1,0 +1,116 @@
+:create node {
+    id_n: Int, # node identifier
+}
+
+:create edge {
+    id_e : Int,   # edge identifier
+    ns : Int,     # source node identifier
+    nd : Int,     # destination node identifier
+}
+
+:create reified_node {
+    id_rn: Int # reified node identifier (represents a subgraph)
+}
+
+:create reified_edge {
+    id_re: Int, # reified edge identifier (represents a subgraph as an edge)
+}
+
+:create label {
+    ln: String,  # name of the label associated with a node or edge
+}
+
+:create prop {
+    key : String, # name of the property
+}
+
+:create node_label {
+    id_n: Int,      # node identifier
+    ln: String      # label name associated with the node
+}
+
+:create edge_label {
+    id_e: Int,      # edge identifier
+    ln: String      # label name associated with the edge
+}
+
+:create node_prop {
+    id_n: Int,       # node identifier
+    key: String,     # property name
+    value: String    # property value
+}
+
+:create edge_prop {
+    id_e: Int,       # edge identifier
+    key: String,     # property name
+    value: String    # property value
+}
+#to add element to the reified node
+:create n_composed_of_node {
+    id_rn: Int,  # Reified node identifier
+    id_n: Int    # Associated node (part of the subgraph)
+}
+
+:create n_composed_of_edge {
+    id_rn: Int,  # Reified node identifier
+    id_e: Int    # Associated edge (part of the subgraph)
+}
+
+:create n_composed_of_node_label {
+    id_rn: Int,  # Reified node identifier
+    id_n: Int,   # Associated node
+    ln: String   # Label name of the node
+}
+
+:create n_composed_of_edge_label {
+    id_rn: Int,  # Reified node identifier
+    id_e: Int,   # Associated edge
+    ln: String   # Label name of the edge
+}
+
+:create n_composed_of_node_prop {
+    id_rn: Int,  # Reified node identifier
+    id_n: Int,   # Associated node
+    key: String  # Property name of the node
+}
+
+:create n_composed_of_edge_prop {
+    id_rn: Int,  # Reified node identifier
+    id_e: Int,   # Associated edge
+    key: String  # Property name of the edge
+}
+
+#to add element to the reified edge
+:create e_composed_of_node {
+    id_re: Int,  # Reified edge identifier
+    id_n: Int    # Associated node (part of the subgraph)
+}
+
+:create e_composed_of_edge {
+    id_re: Int,  # Reified edge identifier
+    id_e: Int    # Associated edge (part of the subgraph)
+}
+
+:create e_composed_of_node_label {
+    id_re: Int,  # Reified edge identifier
+    id_n: Int,   # Associated node
+    ln: String   # Label name of the node
+}
+
+:create e_composed_of_edge_label {
+    id_re: Int,  # Reified edge identifier
+    id_e: Int,   # Associated edge
+    ln: String   # Label name of the edge
+}
+
+:create e_composed_of_node_prop {
+    id_re: Int,  # Reified edge identifier
+    id_n: Int,   # Associated node
+    key: String  # Property name of the node
+}
+
+:create e_composed_of_edge_prop {
+    id_re: Int,  # Reified edge identifier
+    id_e: Int,   # Associated edge
+    key: String  # Property name of the edge
+}

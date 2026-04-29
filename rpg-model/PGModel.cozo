@@ -1,0 +1,47 @@
+:create node {
+    id_n: Int, # node identifier
+}
+
+:create edge {
+    id_e : Int,   # edge identifier
+    ns : Int,     # source node identifier
+    nd : Int     # destination node identifier
+}
+
+:create reified_node {
+    id_rn: Int # reified node identifier (represents a subgraph)
+}
+
+:create reified_edge {
+    id_re: Int # reified edge identifier (represents a subgraph as an edge)
+}
+
+:create label {
+    ln: String  # name of the label associated with a node or edge
+}
+
+:create prop {
+    key # name of the property
+}
+
+:create node_label {
+    id_n: Int,      # node identifier
+    ln: String      # label name associated with the node
+}
+
+:create edge_label {
+    id_e: Int,      # edge identifier
+    ln: String      # label name associated with the edge
+}
+
+:create node_prop {
+    id_n: Int,       # node identifier
+    key: String,     # property name
+    value: String    # property value
+}
+
+:create edge_prop {
+    id_e: Int,       # edge identifier
+    key: String,     # property name
+    value: String    # property value
+}

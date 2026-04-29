@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "HO-GDB"
+version = "0.1.0"
+authors = [
+  { name="Maciej Besta", email="maciej.besta@inf.ethz.ch" },
+  { name="Shriram Chandran", email="schandran@student.ethz.ch" },
+  { name="Jakub Cudak", email="jcudak@student.agh.edu.pl" },
+  { name="Robert Gerstenberger", email="gerstenberger.robert@gmail.com" }
+]
+description = "Python package for 'HO-GDB'"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9,<3.12"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "Flask>=3.1.1",
+  "neo4j>=5.28.1",
+  "numpy>=2.3.0",
+  "pandas>=2.3.0",
+  "pytest>=8.4.1",
+  "python-dotenv>=1.1.0",
+  "Requests>=2.32.4"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [
+  "HOGDB"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/spcl/HO-GDB"
