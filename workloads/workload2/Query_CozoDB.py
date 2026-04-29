@@ -432,35 +432,20 @@ pathWeight[path, sum(w)] :=
 
 
 #---------------------------------------
-# exécuter 10 fois auto 
-# n = 10
-# times = []
+#claculate the mean of 10 executions
+n = 10
+times = []
 
-# for _ in range(n):
-#     start = time.time()  
-#     client.run(is4)
-#     end = time.time()  
-#     times.append((end - start) * 1000)  # en ms
+for _ in range(n):
+    start = time.time()  
+    client.run(is4)
+    end = time.time()  
+    times.append((end - start) * 1000)  # en ms
 
-# mean = sum(times) / n
-# print(f"Temps moyen sur {n} exécutions : {mean:.3f} ms")
+mean = sum(times) / n
+print(f"Temps moyen sur {n} exécutions : {mean:.3f} ms")
 
 
-#------------------------
-
-# n = 10
-# times = []
-
-# for _ in range(n):
-#     start = time.time()  
-#     client.run(is2)
-#     end = time.time()  
-#     res =(end - start )* 1000  # en ms
-#     print(res)
-#     times.append(res)
-
-# mean = sum(times) / n
-# print(f"Temps moyen sur {n} exécutions : {mean:.3f} ms")
 
 
 

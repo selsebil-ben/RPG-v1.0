@@ -1,0 +1,17 @@
+R1: Internal Composition of a Reified Node (P1):
+Given the id of a reified node, this query returns its internal composition, including all constituent elements and their associated labels and properties.
+
+R2: Tag Selection within a taggedComment (P1):
+Given a tag name, this query retrieves the ids of all tags included in a reified node of type taggedComment whose name matches the input parameter.
+
+R3: Internal Composition of a Reified Edge (P2):
+Given the id of a reified edge, this query returns its internal structure and associated elements.
+
+R4: Retrieval of Comments Associated with Reified create Edges (P2):
+Given a creationDate and a locationIP, this query retrieves the comments associated with reified create edges that were created at the specified date by users whose IP address matches the input parameter. In the SNB benchmark, dates are represented as Unix timestamps in milliseconds since January 1st, 1970 (UTC).
+
+R5: Forum Members Based on Membership Size (P3):
+Given a threshold value for the memberCount of a forum, query R5a retrieves all persons belonging to forums with a number of members greater than the threshold, along with their locationIP; and query R5b retrieves those belonging to forums with a number of members less than the threshold.
+
+R6: Recursive Exploration of Multi-Level Abstractions (P4):
+This query performs a recursive search over nested reified nodes labeled repliedComment. It retrieves a source comment c1 connected to a destination comment c2 via a replyOf relationship, where both comments belong to a reified node labeled simpleRepliedComment. This node is itself contained within higher-level reified nodes labeled repliedComment, enabling the evaluation of recursive abstraction depth.
